@@ -24,3 +24,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -DskipTests -B package --file pom.xml
+
+  deployment:
+    runs-on: ubuntu-latest
+    environment: 
+      name: Testing
+      url: https://www.funkymonkeydoesitallday.com
+    steps:
+      - name: deploy
+        # ...deployment-specific steps
