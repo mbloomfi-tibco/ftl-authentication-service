@@ -32,4 +32,8 @@ jobs:
       url: https://www.funkymonkeydoesitallday.com
     steps:
       - name: deploy
-        # ...deployment-specific steps
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven
