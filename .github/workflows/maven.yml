@@ -29,7 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: Testing
-      url: https://www.funkymonkeydoesitallday.com
     steps:
       - name: deploy
         uses: actions/setup-java@v3
