@@ -1,4 +1,4 @@
-package com.tibco.messaging.ftl.ldapauthservice;
+package com.tibco.messaging.ftl.authservice.controller;
 
 public class FtlAuthenticationRequest {
 

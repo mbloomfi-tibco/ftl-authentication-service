@@ -1,15 +1,19 @@
-package com.tibco.messaging.ftl.ldapauthservice;
+package com.tibco.messaging.ftl.authservice.controller;
 
-import com.tibco.messaging.ftl.ldap.LDAPClient;
-import org.springframework.web.bind.annotation.*;
+import com.tibco.messaging.ftl.authservice.ldap.SimpleLDAPClient;
+import com.tibco.messaging.ftl.authservice.ldap.client.LdapClient;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
 @RestController
 public class LoginController {
 
-        LDAPClient ldapClient = new LDAPClient();
+        //   LdapClient ldapClient = new LdapClient();
 
+        SimpleLDAPClient ldapClient = new  SimpleLDAPClient();
 
         @PostMapping("/login")
         public FtlAuthenticationResponse authenticate(@RequestBody FtlAuthenticationRequest authRequest) {
@@ -28,10 +32,11 @@ public class LoginController {
                 }
            **/
                 try {
-                     ldapClient.authenticate(authRequest.getUsername(), authRequest.getPassword());
+                     ldapClient.authenticateUser(authRequest.getUsername(), authRequest.getPassword());
                         ftlAuthenticationResponse.setAuthenticated(true);
                 } catch  (Exception ex){
                         System.out.println("Failed to log in user " + authRequest.getPassword());
+                        ex.printStackTrace();
                         ftlAuthenticationResponse.setAuthenticated(false);
                 }
                 // LDAP Query..  Map ftl-admin .. EMS Admin Group..

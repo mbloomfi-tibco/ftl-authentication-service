@@ -1,17 +1,17 @@
-package com.tibco.messaging.ftl.ldap;
+package com.tibco.messaging.ftl.authservice.ldap.data.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.ldap.core.*;
 import org.springframework.ldap.support.LdapNameBuilder;
-
+import org.springframework.ldap.core.ContextSource;
 import javax.naming.Name;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
 
-public class LDAPClient {
+public class LdapClient {
 
     @Autowired
     private Environment env;
@@ -43,7 +43,7 @@ public class LDAPClient {
                 .build();
         DirContextAdapter context = new DirContextAdapter(dn);
 
-        context.setAttributeValues("objectclass", new String[] { "top", "person", "organizationalPerson", "inetOrgPerson" });
+        context.setAttributeValues("objectclass", new String[]{"top", "person", "organizationalPerson", "inetOrgPerson"});
         context.setAttributeValue("cn", username);
         context.setAttributeValue("sn", username);
         context.setAttributeValue("userPassword", digestSHA(password));
@@ -59,7 +59,7 @@ public class LDAPClient {
                 .build();
         DirContextOperations context = ldapTemplate.lookupContext(dn);
 
-        context.setAttributeValues("objectclass", new String[] { "top", "person", "organizationalPerson", "inetOrgPerson" });
+        context.setAttributeValues("objectclass", new String[]{"top", "person", "organizationalPerson", "inetOrgPerson"});
         context.setAttributeValue("cn", username);
         context.setAttributeValue("sn", username);
         context.setAttributeValue("userPassword", digestSHA(password));
@@ -80,6 +80,4 @@ public class LDAPClient {
         }
         return "{SHA}" + base64;
     }
-
-
 }

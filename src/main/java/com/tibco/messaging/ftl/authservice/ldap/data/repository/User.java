@@ -1,4 +1,4 @@
-package com.tibco.messaging.ftl.ldap.data;
+package com.tibco.messaging.ftl.authservice.ldap.data.repository;
 
 import javax.naming.Name;
 

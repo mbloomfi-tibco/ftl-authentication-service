@@ -1,4 +1,4 @@
-package com.tibco.messaging.ftl.ldapauthservice;
+package com.tibco.messaging.ftl.authservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

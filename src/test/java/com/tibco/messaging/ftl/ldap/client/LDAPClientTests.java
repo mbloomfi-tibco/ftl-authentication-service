@@ -1,6 +1,7 @@
 package com.tibco.messaging.ftl.ldap.client;
 
-import com.tibco.messaging.ftl.ldap.LDAPClient;
+import com.tibco.messaging.ftl.authservice.ldap.client.LdapClient;
+import com.tibco.messaging.ftl.ldap.javaconfig.TestConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @ActiveProfiles("testlive")
 @ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
 
-public class ldapclientTests {
+public class LDAPClientTests {
 
     private static final String USER2 = "TEST02";
     private static final String USER3 = "TEST03";
@@ -31,7 +32,7 @@ public class ldapclientTests {
     private static final String SEARCH_STRING = "TEST*";
 
     @Autowired
-    private LDAPClient ldapClient;
+    private LdapClient ldapClient;
 
     @Test
     public void givenLdapClient_whenCorrectCredentials_thenSuccessfulLogin() {

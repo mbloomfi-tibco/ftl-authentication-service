@@ -1,6 +1,6 @@
-package com.tibco.messaging.ftl.ldap.client;
+package com.tibco.messaging.ftl.ldap.javaconfig;
 
-import com.tibco.messaging.ftl.ldap.LDAPClient;
+import com.tibco.messaging.ftl.authservice.ldap.client.LdapClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -54,7 +54,7 @@ public class TestConfig {
     }
 
     @Bean
-    public LDAPClient ldapClient() {
-        return new LDAPClient();
+    public LdapClient ldapClient() {
+        return new LdapClient();
     }
 }
