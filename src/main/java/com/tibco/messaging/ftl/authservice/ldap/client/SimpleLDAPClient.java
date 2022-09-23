@@ -143,7 +143,7 @@ public class SimpleLDAPClient {
             Properties env = new Properties();
             env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
             env.put(Context.PROVIDER_URL, "ldap://localhost:10389");
-            env.put(Context.SECURITY_PRINCIPAL, "cn="+username+",ou=users");  //check the DN correctly
+            env.put(Context.SECURITY_PRINCIPAL, "cn="+username+",ou=users,ou=system");  //check the DN correctly
             env.put(Context.SECURITY_CREDENTIALS, password);
 
             DirContext con = new InitialDirContext(env);
