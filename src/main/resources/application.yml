@@ -1,0 +1,27 @@
+FTLLoginController:
+   ftl.authentication.mode: ldap
+
+server:
+  port: 443
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 3q@v)dha{M:7A{8?
+    keyStoreType: PKCS12
+    keyAlias: tomcat
+
+#server.port=8080
+server.session-timeout=1800
+
+spring:
+  thymeleaf:
+    cache: false
+  security:
+
+#management.health.ldap.enabled=false
+
+#ldap.partitionSuffix=dc=example,dc=com
+#ldap.partition=example
+#ldap.principal=uid=admin,ou=system
+#ldap.password=secret
+#ldap.port=10389
+#ldap.url=ldap://localhost:10389
