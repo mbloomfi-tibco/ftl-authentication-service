@@ -1,6 +1,5 @@
 package com.tibco.messaging.ftl.ldap.javaconfig;
 
-import com.tibco.messaging.ftl.authservice.ldap.client.LdapClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

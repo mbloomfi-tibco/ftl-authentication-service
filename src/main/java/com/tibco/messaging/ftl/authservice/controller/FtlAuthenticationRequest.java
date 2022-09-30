@@ -1,18 +1,22 @@
 package com.tibco.messaging.ftl.authservice.controller;
 
+import java.nio.charset.StandardCharsets;
+import java.text.Normalizer;
+import java.util.Base64;
+
 public class FtlAuthenticationRequest {
 
     /*
-         * We're expecting input with the form
-         * {
-         *      "username" : "guest",
-         *      "password" : "Z3Vlc3QtcHc=",
-         *      "meta":{
-         *          "appname":"myapp"
-         *          ...
-         *      }
-         * }
-    */
+     * We're expecting input with the form
+     * {
+     *      "username" : "guest",
+     *      "password" : "Z3Vlc3QtcHc=",
+     *      "meta":{
+     *          "appname":"myapp"
+     *          ...
+     *      }
+     * }
+     */
 
 
     public String getUsername() {
@@ -35,6 +39,12 @@ public class FtlAuthenticationRequest {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPasswordDec() {
+
+            String password = new String(Base64.getDecoder().decode((String) this.password), StandardCharsets.UTF_8);
+            return password =Normalizer.normalize(password,Normalizer.Form.NFC);
     }
 
     public void setPassword(String password) {

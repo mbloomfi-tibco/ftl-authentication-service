@@ -1,4 +1,4 @@
-package com.tibco.messaging.ftl.authservice.ldap;
+package com.tibco.messaging.ftl.authservice.ldap.client;
 
 import java.util.Properties;
 
@@ -112,10 +112,8 @@ public class SimpleLDAPClient {
 
     }
 
-    public void searchUsers() throws NamingException {
-        //String searchFilter = "(uid=1)"; //  for one user
-        //String searchFilter = "(&(uid=1)(cn=Smith))"; // and condition
-        String searchFilter = "(|(uid=1)(uid=2)(cn=Smith))"; // or condition
+    public void searchUserByUID(String user) throws NamingException {
+        String searchFilter = "(|(uid=1)(uid=2)(cn=" + user + " ))"; // or condition
         String[] reqAtt = { "cn", "sn","uid" };
         SearchControls controls = new SearchControls();
         controls.setSearchScope(SearchControls.SUBTREE_SCOPE);

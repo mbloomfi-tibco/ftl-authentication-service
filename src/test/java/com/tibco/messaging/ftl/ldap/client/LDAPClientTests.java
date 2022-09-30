@@ -1,6 +1,5 @@
 package com.tibco.messaging.ftl.ldap.client;
 
-import com.tibco.messaging.ftl.authservice.ldap.client.LdapClient;
 import com.tibco.messaging.ftl.ldap.javaconfig.TestConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,5 +1,8 @@
 FTLLoginController:
-   ftl.authentication.mode: ldap
+  authentication:
+    mode: ldap
+
+## To enable SSL switch ssl to enabled
 
 server:
   port: 443
@@ -8,14 +11,8 @@ server:
     key-store-password: 3q@v)dha{M:7A{8?
     keyStoreType: PKCS12
     keyAlias: tomcat
-
-#server.port=8080
-server.session-timeout=1800
-
-spring:
-  thymeleaf:
-    cache: false
-  security:
+    enabled-protocols: TLSv1.3
+  session-timeout: 1800
 
 #management.health.ldap.enabled=false
 
