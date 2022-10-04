@@ -1,5 +1,7 @@
 package com.tibco.messaging.ftl.authservice.ldap.client;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.util.Properties;
 
 import javax.naming.AuthenticationException;
@@ -12,6 +14,16 @@ public class SimpleLDAPClient {
 
     DirContext connection;
 
+   /** @Value("ldapServerURL")
+    String ldapServerURL;
+
+    @Value("ldapPassword")
+    String ldapPassword;
+
+    @Value("ldapPrinciple")
+    String ldapPrinciple;
+**/
+
     public SimpleLDAPClient() {
         connect();
     }
@@ -19,8 +31,8 @@ public class SimpleLDAPClient {
     public void connect() {
         Properties env = new Properties();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL, "ldap://localhost:10389");
-        env.put(Context.SECURITY_PRINCIPAL, "uid=admin, ou=system");
+        env.put(Context.PROVIDER_URL,"ldap://localhost:10389");
+        env.put(Context.SECURITY_PRINCIPAL,"uid=admin, ou=system");
         env.put(Context.SECURITY_CREDENTIALS, "secret");
         try {
             connection = new InitialDirContext(env);

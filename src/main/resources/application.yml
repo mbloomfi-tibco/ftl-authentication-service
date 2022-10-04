@@ -1,24 +1,20 @@
 FTLLoginController:
   authentication:
-    mode: ldap
+    mode: LDAP   ## Change to different value to invoke to test against hard coded string.
+
+SimpleLDAPClient:
+   ldap:
+     serverURL: ldap://localhost:10389
+     password: secret
+     principle: uid=admin, ou=system
 
 ## To enable SSL switch ssl to enabled
-
 server:
   port: 443
   ssl:
-    key-store: classpath:keystore.p12
+    key-store: classpath:keystore-auth.p12
     key-store-password: 3q@v)dha{M:7A{8?
     keyStoreType: PKCS12
-    keyAlias: tomcat
+    keyAlias: auth-server
     enabled-protocols: TLSv1.3
   session-timeout: 1800
-
-#management.health.ldap.enabled=false
-
-#ldap.partitionSuffix=dc=example,dc=com
-#ldap.partition=example
-#ldap.principal=uid=admin,ou=system
-#ldap.password=secret
-#ldap.port=10389
-#ldap.url=ldap://localhost:10389
