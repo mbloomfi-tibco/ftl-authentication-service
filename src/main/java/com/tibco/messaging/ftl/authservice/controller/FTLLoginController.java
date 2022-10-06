@@ -14,13 +14,16 @@ import java.util.ArrayList;
 public class FTLLoginController {
 
         Logger logger = LoggerFactory.getLogger(FTLLoginController.class);
-        SimpleLDAPClient ldapClient = new  SimpleLDAPClient();
+
+        SimpleLDAPClient ldapClient = new SimpleLDAPClient();
 
         @Value("${FTLLoginController.authentication.mode}")
         private String authenticationMode;
 
         @PostMapping("/login")
         public FtlAuthenticationResponse authenticate(@RequestBody FtlAuthenticationRequest authRequest) {
+
+                System.out.println("Authentication mode is set to: " + authenticationMode);
 
                 logger.info("Authenicating:" + authRequest.getUsername() + " for realm " + authRequest.getMeta().getRealm() + " for app name " + authRequest.getMeta().getAppname());
 
@@ -36,8 +39,7 @@ public class FTLLoginController {
                                 ftlAuthenticationResponse.setAuthenticated(ldapClient.authenticateUser(authRequest.getUsername(), authRequest.getPasswordDec()));
 
                         } catch (Exception ex) {
-                                System.out.println("Failed to log in user " + authRequest.getPassword());
-                                ex.printStackTrace();
+                                logger.error("Failed to log in user " + authRequest.getUsername());
                                 ftlAuthenticationResponse.setAuthenticated(false);
                         }
                 } else {
@@ -48,12 +50,13 @@ public class FTLLoginController {
                         }
                 }
                 if (ftlAuthenticationResponse.isAuthenticated()) {
+                        logger.info("User " + authRequest.getUsername() + " authenticated");
                       //  roles.add("ftl-internal");
-                        roles.add("ftl-admin");
-                       //   roles.add("ftl");
                         roles.add("ftl-guest");
-                        roles.add("ftl-admin");
-
+                      //  roles.add("ftl-admin");
+                       //   roles.add("ftl");
+                } else {
+                        logger.warn("User " + authRequest.getUsername() + " failed to authenticate");
                 }
 
                 // LDAP Query..  Map ftl-admin .. EMS Admin Group..

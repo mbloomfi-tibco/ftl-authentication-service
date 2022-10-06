@@ -2,11 +2,10 @@ FTLLoginController:
   authentication:
     mode: LDAP   ## Change to different value to invoke to test against hard coded string.
 
-SimpleLDAPClient:
-   ldap:
-     serverURL: ldap://localhost:10389
-     password: secret
-     principle: uid=admin, ou=system
+LDAPConfig:
+  providerURL: ldap://localhost:10389
+  password: secret
+  principle: uid=admin, ou=system
 
 ## To enable SSL switch ssl to enabled
 server:

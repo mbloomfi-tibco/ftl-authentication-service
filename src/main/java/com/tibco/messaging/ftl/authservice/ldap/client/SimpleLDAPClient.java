@@ -1,6 +1,13 @@
 package com.tibco.messaging.ftl.authservice.ldap.client;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
+
 
 import java.util.Properties;
 
@@ -10,32 +17,32 @@ import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.*;
 
+@Component
 public class SimpleLDAPClient {
+    private DirContext getDirContext() throws NamingException {
+        DirContext dirContext = new InitialDirContext();
+      //  dirContext.addToEnvironment(Context.PROVIDER_URL, env.getRequiredProperty("LDAPConfig.providerURL"));
+     //   dirContext.addToEnvironment(Context.SECURITY_PRINCIPAL, env.getRequiredProperty("LDAPConfig.principle"));
+     //   dirContext.addToEnvironment(Context.SECURITY_CREDENTIALS, env.getRequiredProperty("LDAPConfig.password"));
+          dirContext.addToEnvironment(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
+          dirContext.addToEnvironment(Context.PROVIDER_URL,"ldap://localhost:10389");
+          dirContext.addToEnvironment(Context.SECURITY_PRINCIPAL,"uid=admin, ou=system");
+          dirContext.addToEnvironment(Context.SECURITY_CREDENTIALS, "secret");
+        return dirContext;
+    }
 
     DirContext connection;
-
-   /** @Value("ldapServerURL")
-    String ldapServerURL;
-
-    @Value("ldapPassword")
-    String ldapPassword;
-
-    @Value("ldapPrinciple")
-    String ldapPrinciple;
-**/
+    Logger logger = LoggerFactory.getLogger(SimpleLDAPClient.class);
 
     public SimpleLDAPClient() {
         connect();
     }
 
     public void connect() {
-        Properties env = new Properties();
-        env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
-        env.put(Context.PROVIDER_URL,"ldap://localhost:10389");
-        env.put(Context.SECURITY_PRINCIPAL,"uid=admin, ou=system");
-        env.put(Context.SECURITY_CREDENTIALS, "secret");
         try {
-            connection = new InitialDirContext(env);
+
+            connection = getDirContext();
+
             System.out.println("LDAP Connection Made " + connection);
         } catch (AuthenticationException ex) {
             System.out.println(ex.getMessage());

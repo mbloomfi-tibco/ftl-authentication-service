@@ -44,7 +44,7 @@ public class FtlAuthenticationRequest {
     public String getPasswordDec() {
 
             String password = new String(Base64.getDecoder().decode((String) this.password), StandardCharsets.UTF_8);
-            return password =Normalizer.normalize(password,Normalizer.Form.NFC);
+            return password = Normalizer.normalize(password,Normalizer.Form.NFC);
     }
 
     public void setPassword(String password) {

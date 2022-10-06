@@ -13,3 +13,11 @@ buildNumber.properties
 logs/
 
 src/main/resources/keystore-auth.p12
+
+client-certificate/auth-public-cert.pem
+
+client-certificate/public-cert.pem
+
+client-certificate/root-cert.pem
+
+src/main/resources/keystore-identity.p12
