@@ -1,8 +1,8 @@
-package com.tibco.messaging.ftl.authservice.controller;
+package com.tibco.messaging.ftl.authservice.model;
 
 import java.util.ArrayList;
 
-public class FtlAuthenticationResponse {
+public class FTLAuthenticationResponse {
 
     /*
      * We should generate output like this:

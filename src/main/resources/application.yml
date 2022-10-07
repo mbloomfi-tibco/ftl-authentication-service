@@ -1,11 +1,15 @@
+management.trace.http.enabled: true
+management.endpoints.web.exposure.include: httptrace
+
 FTLLoginController:
   authentication:
     mode: LDAP   ## Change to different value to invoke to test against hard coded string.
 
-LDAPConfig:
+ldap:
   providerURL: ldap://localhost:10389
   password: secret
-  principle: uid=admin, ou=system
+  adminPrinciple: uid=admin,ou=system
+  userPrinciple: ou=users,ou=system
 
 ## To enable SSL switch ssl to enabled
 server:

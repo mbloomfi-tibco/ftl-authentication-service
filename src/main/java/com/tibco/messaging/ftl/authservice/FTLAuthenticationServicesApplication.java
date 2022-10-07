@@ -9,7 +9,9 @@ public class FTLAuthenticationServicesApplication {
 
 
     public static void main(String[] args) {
+
         SpringApplication.run(FTLAuthenticationServicesApplication.class, args);
+
     }
 
 }

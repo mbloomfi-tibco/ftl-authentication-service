@@ -13,7 +13,6 @@ public class SimpleLDAPTestsSetup {
         simpleLDAPClient.addUserToGroup("guest","ftl");
         simpleLDAPClient.addUserToGroup("guest","ftl-admin");
         simpleLDAPClient.addUserToGroup("guest","ftl-internal");
-
     }
 
     @Test

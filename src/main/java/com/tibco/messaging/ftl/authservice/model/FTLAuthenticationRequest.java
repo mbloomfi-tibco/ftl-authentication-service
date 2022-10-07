@@ -1,10 +1,10 @@
-package com.tibco.messaging.ftl.authservice.controller;
+package com.tibco.messaging.ftl.authservice.model;
 
 import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 import java.util.Base64;
 
-public class FtlAuthenticationRequest {
+public class FTLAuthenticationRequest {
 
     /*
      * We're expecting input with the form
@@ -31,7 +31,7 @@ public class FtlAuthenticationRequest {
     private String password;
     private FTLMetaData meta;  // this needs to be next object
 
-    public FtlAuthenticationRequest(String userName, String password, FTLMetaData meta) {
+    public FTLAuthenticationRequest(String userName, String password, FTLMetaData meta) {
         this.username = userName;
         this.password = password;
         this.meta = meta;

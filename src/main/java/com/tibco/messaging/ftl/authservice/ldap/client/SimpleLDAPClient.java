@@ -17,7 +17,7 @@ import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.*;
 
-@Component
+
 public class SimpleLDAPClient {
     private DirContext getDirContext() throws NamingException {
         DirContext dirContext = new InitialDirContext();
